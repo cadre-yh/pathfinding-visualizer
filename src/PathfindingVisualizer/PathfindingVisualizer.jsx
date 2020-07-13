@@ -5,19 +5,18 @@ import styled from "styled-components";
 
 import "./PathfindingVisualizer.css";
 
-const START_NODE_ROW = 13; /* starting point for algorithm */
+const START_NODE_ROW = 18; /* starting point for algorithm */
 const START_NODE_COL = 12;
-const FINISH_NODE_ROW = 13; /* end point for algorithm */
+const FINISH_NODE_ROW = 18; /* end point for algorithm */
 const FINISH_NODE_COL = 37;
 
 const Button = styled.button`
   background-color: #81a1c1;
   color: #d8dee9;
-  padding: 5px 15px;
   border-radius: 5px;
   outline: 0;
+  margin: 10px;
   text-transform: uppercase;
-  margin: 10px 0px;
   cursor: pointer;
   box-shadow: 0px 2px 2px lightgray;
   transition: ease background-color 250ms;
@@ -91,6 +90,10 @@ export default class PathfindingVisualizer extends Component {
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
+  resetBoard = () => {
+    window.location.reload(false);
+  };
+
   render() {
     const { grid, mouseIsPressed } = this.state;
 
@@ -99,6 +102,8 @@ export default class PathfindingVisualizer extends Component {
         <Button onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
         </Button>
+        <br></br>
+        <Button onClick={() => this.resetBoard()}>Reset</Button>
 
         <div className="grid">
           {grid.map((row, rowIdx) => {
@@ -127,6 +132,9 @@ export default class PathfindingVisualizer extends Component {
             );
           })}
         </div>
+        <div>
+          <body className="bottom-container"></body>
+        </div>
       </>
     );
   }
@@ -134,7 +142,7 @@ export default class PathfindingVisualizer extends Component {
 
 const getInitialGrid = () => {
   const grid = [];
-  for (let row = 0; row < 30; row++) {
+  for (let row = 0; row < 37; row++) {
     const currentRow = [];
     for (let col = 0; col < 50; col++) {
       currentRow.push(createNode(col, row));

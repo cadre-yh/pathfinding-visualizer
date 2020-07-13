@@ -1,12 +1,9 @@
 .grid {
-  margin: 90px 150px 0; /* top. right+left, bottom */
-  background-color: #2e3440;
-  padding-bottom: 15%;
+  width: fit-content;
+  margin: 50px auto 0; /* top. right+left, bottom */
+  background-color: #3b4252;
 }
 
-.title {
-  color: #d8dee9;
-  padding-bottom: 50px;
-  font-size: 50px;
-  font-style: italic;
+.bottom-container {
+  padding: 55px;
 }
